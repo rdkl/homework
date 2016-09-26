@@ -24,7 +24,7 @@ class Job(object):
 
     # --------------------------------------------------------------------------
     def add_working_interval(self, start, finish):
-        print self, self.remaining_exectime
+        # print self, self.remaining_exectime
         self.work_intervals.append([start, finish])
         if finish - start > self.remaining_exectime + 10**-6:
             print self
