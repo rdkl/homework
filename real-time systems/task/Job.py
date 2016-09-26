@@ -49,10 +49,11 @@ class Job(object):
                         continue
                 intervals.append(item)
 
-            return "Task %d, job %2d (r: %.1lf, f: %.1lf) %s" % \
+            return "Task %d, job %2d (r: %.2lf, d:%.1lf, f: %.1lf) %s" % \
                    (self.task_id,
                     self.job_id,
                     self.release,
+                    self.release + self.deadline,
                     self.finish,
                     "".join("[%.2lf, %.2lf] " % (item[0], item[1])
                             for item in intervals))

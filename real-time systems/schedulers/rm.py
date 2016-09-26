@@ -2,7 +2,7 @@ import dynamic_scheduler
 
 
 ################################################################################
-class RMshcduler(dynamic_scheduler.DynamicScheduler):
+class RMscheduler(dynamic_scheduler.DynamicScheduler):
     def __init__(self):
         dynamic_scheduler.DynamicScheduler.__init__(self)
 
