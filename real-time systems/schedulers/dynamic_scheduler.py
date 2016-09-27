@@ -71,9 +71,9 @@ class DynamicScheduler(basic_scheduler.BasicScheduler):
                 continue
 
             # Otherwise, complete whole job. In preemptive case we have enough
-            # time before new job releases, what forces us to rechoose most
+            # time before new job releases, what forces us to rechoose the most
             # important task. In non-preemptive just complete job until the end.
-            # job.remaining_exectime changes after adding new interval.
+            # job.remaining_exectime changes after new interval addition.
             rt = job.remaining_exectime
             job.add_working_interval(time, time + rt)
             time += rt

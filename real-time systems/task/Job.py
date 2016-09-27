@@ -36,6 +36,12 @@ class Job(object):
             self.set_finish_time(finish)
 
     # --------------------------------------------------------------------------
+    def compute_response(self):
+        if self.finish is None:
+            raise Exception("Response computation attempt for non-completed job")
+        return self.finish - self.release
+
+    # --------------------------------------------------------------------------
     def __str__(self):
         if self.finish is None:
             return "Task %d, job %2d (r: %.2lf)" % (self.task_id,

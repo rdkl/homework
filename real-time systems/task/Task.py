@@ -23,24 +23,31 @@ class Task(object):
             task_id = random.randint(10, 99)
 
         self.task_id = task_id
+        self.jobs_list = []
 
     # --------------------------------------------------------------------------
     def generate_jobs_list(self, release_bound):
         time = self.phase
-        jobs_list = []
-
         job_id = 0
 
         while time < release_bound:
-            jobs_list.append(Job.Job(time,
-                                     self.exectime,
-                                     self.deadline,
-                                     self.task_id,
-                                     job_id))
+            self.jobs_list.append(Job.Job(time,
+                                          self.exectime,
+                                          self.deadline,
+                                          self.task_id,
+                                          job_id))
             time += self.period
             job_id += 1
 
-        return jobs_list
+        return self.jobs_list
+
+    # --------------------------------------------------------------------------
+    def get_responses(self):
+        return [job.compute_response() for job in self.jobs_list]
+
+    # --------------------------------------------------------------------------
+    def get_utilization(self):
+        return float(self.exectime) / self.period
 
     # --------------------------------------------------------------------------
 ################################################################################
