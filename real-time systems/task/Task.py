@@ -4,6 +4,8 @@ import Job
 
 ################################################################################
 class Task(object):
+    id_counter = 0
+
     def __init__(self, period, exectime, phase=0.0, relative_deadline=None,
                  task_id=None):
         self.exectime = float(exectime)
@@ -20,7 +22,13 @@ class Task(object):
                                                    self.exectime))
 
         if task_id is None:
-            task_id = random.randint(10, 99)
+            # task_id = random.randint(10, 99)
+            task_id = Task.id_counter
+            Task.id_counter += 1
+        else:
+            Task.id_counter = max(Task.id_counter, task_id + 1)
+        if task_id == 34:
+            pass
 
         self.task_id = task_id
         self.jobs_list = []
