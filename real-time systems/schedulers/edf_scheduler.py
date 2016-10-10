@@ -9,7 +9,9 @@ class EDFscheduler(dynamic_scheduler.DynamicScheduler):
     # --------------------------------------------------------------------------
     def compute_job_priority(self, job):
         # Less priority is better.
-        return int((job.deadline + job.release) * 10 ** 8) + int(job.release)
+        return int((job.deadline + job.release) * 10 ** 8) + \
+               100 * int(job.task_id) + int(job.release)
+        # return int((job.deadline + job.release) * 10 ** 8) + int(job.release)
 
     # --------------------------------------------------------------------------
     def compute_task_priorities(self, task_list):
