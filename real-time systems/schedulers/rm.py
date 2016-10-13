@@ -10,7 +10,7 @@ class RMscheduler(dynamic_scheduler.DynamicScheduler):
     def compute_job_priority(self, job):
         # Less priority is better.
         priority = int(self.priorities[job.task_id] * 10 ** 16) + \
-                   int(job.release * 10 ** 8) + job.job_id
+                   int(job.release * 10 ** 8) + int(job.job_id)
 
         return priority
 
