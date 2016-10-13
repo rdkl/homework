@@ -59,10 +59,11 @@ class Task(object):
 
     # --------------------------------------------------------------------------
     def __str__(self):
-        return "Task %d, T: %.1lf, D: %.1lf, ph: %.1lf" % (
+        return "Task %d, T: %.1lf, D: %.1lf, C: %.1lf, ph: %.1lf" % (
             self.task_id,
             self.period,
             self.deadline,
+            self.exectime,
             self.phase
         )
 

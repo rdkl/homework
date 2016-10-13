@@ -1,17 +1,16 @@
-import dynamic_scheduler
+from dynamic_scheduler import DynamicScheduler
 
 
 ################################################################################
-class EDFscheduler(dynamic_scheduler.DynamicScheduler):
+class EDFscheduler(DynamicScheduler):
     def __init__(self):
-        dynamic_scheduler.DynamicScheduler.__init__(self)
+        DynamicScheduler.__init__(self)
 
     # --------------------------------------------------------------------------
     def compute_job_priority(self, job):
-        # Less priority is better.
+        # Less value will be served first.
         return int((job.deadline + job.release) * 10 ** 8) + \
                100 * int(job.task_id) + int(job.release)
-        # return int((job.deadline + job.release) * 10 ** 8) + int(job.release)
 
     # --------------------------------------------------------------------------
     def compute_task_priorities(self, task_list):

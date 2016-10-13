@@ -10,7 +10,7 @@ class BasicScheduler(object):
 
     # --------------------------------------------------------------------------
     @abc.abstractmethod
-    def generate_schedule(self, time_bound, task_list):
+    def generate_schedule(self, time_bound, task_list, context_switch_time):
         pass
 
     # --------------------------------------------------------------------------
